@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>json_gal</title>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script src="js/jquery-2.2.0.min.js"></script>
+	<script src="js/jquery.cycle.all.js"></script>
+	<script src="gal.js"></script>
+	<style>
+			*{
+	margin:0;
+	}
+	body{
+		margin: 0;
+		background-image: url("_images/wood.jpg");
+		background-repeat: no-repeat;
+		/*font-family: 'Alef Hebrew', arial ,sans-serif;*/
+	}
+	.all_site  {
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+		padding:10px;
+
+	}
+	.box{
+		background-image: url("_images/wood.jpg");
+		min-height: 500px;
+		width:90%;
+		margin: 0 auto;
+		padding:10px;
+		border-radius: 10px;
+		/*overflow:hidden;*/
+	}
+	.box img{
+		float:left;
+		border-radius: 10px;
+	}
+	.box h1 {
+		font-weight: bold;
+		font-size: 4em;
+		color: #115F79;
+		font-family: Papyrus, fantasy;
+		text-align: center;
+	}
+	.box article {
+		font-weight: bold;
+		font-size: 2em;
+		color: #fff;
+		font-family: 'Brush Script MT', cursive;
+		margin-left: 515px;
+	}
+	#btn{
+		margin-top: 505px;
+		margin-left: 15px;
+		float: left;
+		}
+	#btn #prev_btn, #btn #next_btn {
+		background: #115F79;
+		padding: 5px 15px;
+		border-radius: 10px;
+		}
+	#btn a#prev_btn, #btn a#next_btn {
+		text-decoration: none;
+		color: #fff;
+		font-size: 2em;
+		}
+	</style>
+	<script>
+		$(document).ready(function() {
+			//alert("jquery ready")
+			createSeries();
+			})
+
+			function createSeries()
+			{
+				for(var i=0; i < json_ar.length;i++)
+				{
+					var _box = $("<div class='box'></div>");
+					$(".all_site").append(_box);
+
+					var _img = $("<img src=' _images/"+json_ar[i].image+" '>");
+					_box.append(_img);
+					var _h1 = $("<h1>"+json_ar[i].name+"</h1>");
+					var _about = $("<article><strong></strong>"+json_ar[i].about+"</article>")
+
+
+					_box.append(_h1);
+					_box.append(_about);
+				}
+			}
+			$('.all_site').cycle({
+					fx: 'fade',
+					pause: 1,
+					speed: 2000,
+					timeout: 500,
+					next: '#next_btn',
+					prev: '#prev_btn'
+				});
+	</script>
+</head>
+<body>
+
+
+	<div class="container all_site">
+
+	    <!--<div class="box">
+			<img src="_images/breakingbad.jpg">
+			<h2>Breaking bad</h2>
+			<article><strong>Seasons:</strong>20</article>
+			<article><strong>views:</strong>10,000</article>
+	    </div>-->
+	</div>
+<div id="btn">	<a href="#" id="prev_btn">&laquo;</a>
+					<a href="#" id="next_btn">&raquo;</a>	</div>
+</body>
+</html>
